@@ -10,6 +10,7 @@ from app.models.ingestion_log import IngestionLog
 from app.models.one_line_news import OneLineNews
 from app.models.source import Source
 from app.models.source_health import SourceHealth
+from app.models.story_cluster import StoryCluster
 from app.models.summary import Summary
 from app.models.topic import Topic
 
@@ -26,6 +27,7 @@ __all__ = [
     "OneLineNews",
     "Source",
     "SourceHealth",
+    "StoryCluster",
     "Summary",
     "Topic",
 ]
