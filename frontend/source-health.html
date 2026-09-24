@@ -1,0 +1,711 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Source Reliability | Global News Tracker
+    </title>
+
+    <style>
+
+        :root {
+            --green: #0b6b4f;
+            --green-light: #168565;
+            --text: #17221e;
+            --muted: #68766f;
+            --border: #dce7e2;
+            --background: #f7faf8;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Inter,
+                system-ui,
+                sans-serif;
+
+            background: var(--background);
+
+            color: var(--text);
+        }
+
+        .container {
+            width: min(1450px, 92vw);
+
+            margin: 0 auto;
+
+            padding: 40px 0 70px;
+        }
+
+        header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding-bottom: 30px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: 34px;
+
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            margin-top: 7px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        button {
+            border: 0;
+
+            border-radius: 8px;
+
+            padding: 10px 16px;
+
+            background: var(--green);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        .summary {
+            display: grid;
+
+            grid-template-columns:
+                repeat(6, 1fr);
+
+            gap: 10px;
+
+            margin: 30px 0;
+        }
+
+        .summary-card {
+            padding: 20px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+        }
+
+        .label {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .value {
+            margin-top: 12px;
+
+            color: var(--green);
+
+            font-size: 30px;
+
+            font-weight: 850;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 950px;
+        }
+
+        th,
+        td {
+            padding: 13px 15px;
+
+            text-align: left;
+
+            border-bottom:
+                1px solid var(--border);
+
+            font-size: 12px;
+        }
+
+        th {
+            background: var(--white);
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 100px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .7px;
+        }
+
+        .healthy {
+            background: #e7f5ef;
+
+            color: #0b6b4f;
+        }
+
+        .error {
+            background: #fcebea;
+
+            color: #a13d36;
+        }
+
+        .stale {
+            background: #fff4df;
+
+            color: #946000;
+        }
+
+        .not_configured,
+        .unknown {
+            background: #edf0ee;
+
+            color: #66716c;
+        }
+
+        .inactive {
+            background: #eeeeee;
+
+            color: #777777;
+        }
+
+        .error-text {
+            max-width: 350px;
+
+            color: #a13d36;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .back {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            color: var(--green);
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        @media (max-width: 1000px) {
+
+            .summary {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .summary {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            header {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <div>
+
+            <h1>
+                Source Reliability
+            </h1>
+
+            <div class="subtitle">
+                Monitoring the health and activity of the
+                Global News Tracker source network
+            </div>
+
+        </div>
+
+        <button
+            onclick="loadData()"
+        >
+            Refresh
+        </button>
+
+    </header>
+
+
+    <section class="summary">
+
+        <div class="summary-card">
+
+            <div class="label">
+                Total
+            </div>
+
+            <div
+                id="total"
+                class="value"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="label">
+                Healthy
+            </div>
+
+            <div
+                id="healthy"
+                class="value"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="label">
+                Errors
+            </div>
+
+            <div
+                id="error"
+                class="value"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="label">
+                Stale
+            </div>
+
+            <div
+                id="stale"
+                class="value"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="label">
+                Not Configured
+            </div>
+
+            <div
+                id="not_configured"
+                class="value"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="label">
+                Inactive
+            </div>
+
+            <div
+                id="inactive"
+                class="value"
+            >
+                --
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Source
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Country
+                    </th>
+
+                    <th>
+                        Region
+                    </th>
+
+                    <th>
+                        Articles
+                    </th>
+
+                    <th>
+                        Last Article
+                    </th>
+
+                    <th>
+                        Last Checked
+                    </th>
+
+                    <th>
+                        Last Run
+                    </th>
+
+                    <th>
+                        Error
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody
+                id="sourceTable"
+            >
+
+                <tr>
+                    <td colspan="9">
+                        Loading...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="/dashboard"
+    >
+        ← Back to Intelligence Dashboard
+    </a>
+
+</div>
+
+
+<script>
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+function formatDate(value) {
+
+    if (!value) {
+        return "--";
+    }
+
+    try {
+
+        return new Date(value).toLocaleString();
+
+    } catch {
+
+        return value;
+    }
+}
+
+
+async function loadData() {
+
+    try {
+
+        const summaryResponse =
+            await fetch(
+                "/api/monitoring/summary",
+                {
+                    cache: "no-store"
+                }
+            );
+
+        const summaryData =
+            await summaryResponse.json();
+
+        const summary =
+            summaryData.summary || {};
+
+        for (
+            const key of [
+                "total",
+                "healthy",
+                "error",
+                "stale",
+                "not_configured",
+                "inactive"
+            ]
+        ) {
+
+            document.getElementById(
+                key
+            ).textContent =
+                Number(
+                    summary[key] || 0
+                ).toLocaleString();
+        }
+
+
+        const sourceResponse =
+            await fetch(
+                "/api/monitoring/sources?limit=500",
+                {
+                    cache: "no-store"
+                }
+            );
+
+        const sourceData =
+            await sourceResponse.json();
+
+        const sources =
+            sourceData.sources || [];
+
+        const table =
+            document.getElementById(
+                "sourceTable"
+            );
+
+
+        if (!sources.length) {
+
+            table.innerHTML =
+                `
+                    <tr>
+                        <td colspan="9">
+                            No source data available.
+                        </td>
+                    </tr>
+                `;
+
+            return;
+        }
+
+
+        table.innerHTML =
+            sources.map(
+                source => {
+
+                    const status =
+                        source.status ||
+                        "unknown";
+
+                    return `
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    ${escapeHtml(
+                                        source.source
+                                    )}
+                                </strong>
+                            </td>
+
+                            <td>
+                                <span
+                                    class="status ${escapeHtml(
+                                        status
+                                    )}"
+                                >
+                                    ${escapeHtml(
+                                        status
+                                    )}
+                                </span>
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    source.country ||
+                                    "--"
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    source.region ||
+                                    "--"
+                                )}
+                            </td>
+
+                            <td>
+                                ${Number(
+                                    source.total_articles ||
+                                    0
+                                ).toLocaleString()}
+                            </td>
+
+                            <td>
+                                ${formatDate(
+                                    source.latest_article
+                                )}
+                            </td>
+
+                            <td>
+                                ${formatDate(
+                                    source.last_checked
+                                )}
+                            </td>
+
+                            <td>
+                                ${Number(
+                                    source.last_articles_found ||
+                                    0
+                                ).toLocaleString()}
+                            </td>
+
+                            <td
+                                class="error-text"
+                                title="${escapeHtml(
+                                    source.latest_error ||
+                                    ""
+                                )}"
+                            >
+                                ${escapeHtml(
+                                    source.latest_error ||
+                                    "--"
+                                )}
+                            </td>
+
+                        </tr>
+                    `;
+                }
+            ).join("");
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "sourceTable"
+        ).innerHTML =
+            `
+                <tr>
+                    <td colspan="9">
+                        Unable to load monitoring data.
+                    </td>
+                </tr>
+            `;
+    }
+}
+
+
+loadData();
+
+setInterval(
+    loadData,
+    60 * 1000
+);
+
+</script>
+
+</body>
+
+</html>

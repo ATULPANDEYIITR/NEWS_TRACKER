@@ -1,0 +1,89 @@
+﻿sources:
+
+  - name: Times of India
+    url: https://timesofindia.indiatimes.com
+    feed_url: https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+    category: India
+    country: India
+    source_type: media
+    active: true
+
+  - name: The Hindu
+    url: https://www.thehindu.com
+    feed_url: https://www.thehindu.com/feeder/default.rss
+    category: India
+    country: India
+    source_type: media
+    active: true
+
+  - name: NDTV
+    url: https://www.ndtv.com
+    feed_url: https://feeds.feedburner.com/ndtvnews-top-stories
+    category: India
+    country: India
+    source_type: media
+    active: true
+
+  - name: Hindustan Times
+    url: https://www.hindustantimes.com
+    feed_url: https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml
+    category: India
+    country: India
+    source_type: media
+    active: true
+
+  - name: Press Information Bureau
+    url: https://pib.gov.in
+    feed_url: https://pib.gov.in/RssMain.aspx
+    category: India
+    country: India
+    source_type: official
+    active: true
+
+  - name: BBC World
+    url: https://www.bbc.com/news/world
+    feed_url: https://feeds.bbci.co.uk/news/world/rss.xml
+    category: World
+    country: United Kingdom
+    source_type: media
+    active: true
+
+  - name: NPR World
+    url: https://www.npr.org/sections/world/
+    feed_url: https://feeds.npr.org/1004/rss.xml
+    category: World
+    country: United States
+    source_type: media
+    active: true
+
+  - name: The Guardian World
+    url: https://www.theguardian.com/world
+    feed_url: https://www.theguardian.com/world/rss
+    category: World
+    country: United Kingdom
+    source_type: media
+    active: true
+
+  - name: BBC Technology
+    url: https://www.bbc.com/news/technology
+    feed_url: https://feeds.bbci.co.uk/news/technology/rss.xml
+    category: Technology
+    country: United Kingdom
+    source_type: media
+    active: true
+
+  - name: NPR Business
+    url: https://www.npr.org/sections/business/
+    feed_url: https://feeds.npr.org/1006/rss.xml
+    category: Business
+    country: United States
+    source_type: media
+    active: true
+
+  - name: NPR Science
+    url: https://www.npr.org/sections/science/
+    feed_url: https://feeds.npr.org/1007/rss.xml
+    category: Science
+    country: United States
+    source_type: media
+    active: true

@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ app_name }} | Global News Intelligence</title>
+
+    <meta
+        name="description"
+        content="NEWS TRACKER personal global news intelligence platform."
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=1"
+    >
+</head>
+
+<body>
+
+<div class="background-grid"></div>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-mark">N</div>
+
+        <div>
+            <div class="brand-name">
+                NEWS TRACKER
+            </div>
+
+            <div class="brand-subtitle">
+                GLOBAL NEWS INTELLIGENCE
+            </div>
+        </div>
+    </div>
+
+    <div class="top-status">
+        <span
+            id="status-dot"
+            class="status-dot"
+        ></span>
+
+        <span id="status">
+            CONNECTING
+        </span>
+    </div>
+
+</header>
+
+<main class="container">
+
+    <section class="hero">
+
+        <div class="hero-copy">
+
+            <div class="eyebrow">
+                PERSONAL INTELLIGENCE TERMINAL
+            </div>
+
+            <h1>
+                Understand the world
+                <span>through the news.</span>
+            </h1>
+
+            <p>
+                NEWS TRACKER collects, normalizes, compares,
+                clusters and organizes news into a structured
+                intelligence view.
+            </p>
+
+            <div class="hero-actions">
+
+                <button
+                    id="refresh-button"
+                    class="primary-button"
+                >
+                    REFRESH
+                </button>
+
+                <button
+                    id="collect-button"
+                    class="secondary-button"
+                >
+                    COLLECT NEWS
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-orbit">
+
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+
+            <div class="orbit-core">
+                <span>NEWS</span>
+                <strong>INTEL</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="metrics">
+
+        <div class="metric-card">
+            <span class="metric-label">
+                SOURCES
+            </span>
+
+            <strong id="source-count">
+                --
+            </strong>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">
+                ARTICLES
+            </span>
+
+            <strong id="article-count">
+                --
+            </strong>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">
+                EVENT CLUSTERS
+            </span>
+
+            <strong id="event-count">
+                --
+            </strong>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">
+                MULTI-SOURCE
+            </span>
+
+            <strong id="multi-source-count">
+                --
+            </strong>
+        </div>
+
+    </section>
+
+    <section class="intelligence-panel">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    INTELLIGENCE LAYER
+                </span>
+
+                <h2>
+                    What the sources are reporting
+                </h2>
+            </div>
+
+            <span class="section-note">
+                PRELIMINARY EVENT CLUSTERS
+            </span>
+
+        </div>
+
+        <div
+            id="intelligence-feed"
+            class="intelligence-feed"
+        >
+            Loading intelligence...
+        </div>
+
+    </section>
+
+    <section class="news-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    SOURCE FEED
+                </span>
+
+                <h2>
+                    Latest Developments
+                </h2>
+            </div>
+
+            <span id="story-count">
+                0 stories
+            </span>
+
+        </div>
+
+        <div class="toolbar">
+
+            <div
+                id="category-filters"
+                class="category-filters"
+            ></div>
+
+            <input
+                id="search-input"
+                class="search-input"
+                type="search"
+                placeholder="Search headlines..."
+                autocomplete="off"
+            >
+
+        </div>
+
+        <div
+            id="news-feed"
+            class="news-feed"
+        >
+            Loading articles...
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <div>
+        NEWS TRACKER
+    </div>
+
+    <div>
+        COLLECT → NORMALIZE → DEDUPLICATE → CLUSTER → ANALYZE
+    </div>
+
+</footer>
+
+<script
+    src="/static/js/app.js?v=1"
+    defer
+></script>
+
+</body>
+</html>

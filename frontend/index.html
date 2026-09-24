@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Global News Tracker</title>
+
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-mark">GN</div>
+
+        <div>
+            <h1>Global News Tracker</h1>
+            <p>News Intelligence Platform</p>
+        </div>
+    </div>
+
+    <div class="top-actions">
+
+        <span id="apiStatus" class="status">
+            ● Connecting
+        </span>
+
+        <button id="refreshButton" class="refresh-button">
+            Refresh
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <div>
+            <span class="eyebrow">GLOBAL NEWS INTELLIGENCE</span>
+
+            <h2>
+                Understand the world's news
+                from one place.
+            </h2>
+
+            <p>
+                Track global events, sources, categories,
+                topics, entities and emerging stories
+                through a unified news intelligence system.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATISTICS
+         ===================================================== -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <span class="stat-label">Articles</span>
+            <strong id="totalArticles">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-label">Sources</span>
+            <strong id="totalSources">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-label">Active Sources</span>
+            <strong id="activeSources">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-label">Categories</span>
+            <strong id="totalCategories">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-label">Articles Today</span>
+            <strong id="articlesToday">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-label">Last 24 Hours</span>
+            <strong id="articles24h">0</strong>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SEARCH
+         ===================================================== -->
+
+    <section class="search-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">DISCOVERY</span>
+                <h3>Search News</h3>
+            </div>
+        </div>
+
+        <div class="search-box">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search headlines, topics, countries or keywords..."
+            >
+
+            <button id="searchButton">
+                Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <section class="dashboard-grid">
+
+        <div class="panel">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">LATEST</span>
+                    <h3>Latest News</h3>
+                </div>
+
+                <button
+                    class="text-button"
+                    id="latestButton">
+                    View Latest
+                </button>
+
+            </div>
+
+            <div id="articlesContainer" class="articles">
+                <div class="loading">
+                    Loading news...
+                </div>
+            </div>
+
+        </div>
+
+
+        <aside class="side-column">
+
+            <div class="panel">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">ANALYTICS</span>
+                        <h3>Top Categories</h3>
+                    </div>
+
+                </div>
+
+                <div id="categoriesContainer"
+                     class="category-list">
+
+                    <div class="loading">
+                        Loading categories...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">SOURCES</span>
+                        <h3>Leading Sources</h3>
+                    </div>
+
+                </div>
+
+                <div id="sourcesContainer"
+                     class="source-list">
+
+                    <div class="loading">
+                        Loading sources...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+
+    <!-- =====================================================
+         ONE LINE NEWS
+         ===================================================== -->
+
+    <section class="panel one-line-panel">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">FAST BRIEFING</span>
+                <h3>One-Line News</h3>
+            </div>
+
+        </div>
+
+        <div id="oneLineContainer"
+             class="one-line-list">
+
+            <div class="loading">
+                Loading briefings...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORY EXPLORER
+         ===================================================== -->
+
+    <section class="panel">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">EXPLORE</span>
+                <h3>Category Explorer</h3>
+            </div>
+
+        </div>
+
+        <div id="categoryExplorer"
+             class="category-buttons">
+
+        </div>
+
+        <div id="categoryArticles"
+             class="articles category-results">
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        Global News Tracker
+        <span>•</span>
+        News Intelligence Platform
+    </p>
+
+    <p>
+        Data collected from configured public news feeds
+        and source endpoints.
+    </p>
+
+</footer>
+
+
+<script src="/frontend/js/app.js"></script>
+
+</body>
+</html>
